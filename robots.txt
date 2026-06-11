@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://jaiporexpress.com/sitemap.xml
+Sitemap: https://jaipore-xpress-staging.askkoraai.com/sitemap.xml
