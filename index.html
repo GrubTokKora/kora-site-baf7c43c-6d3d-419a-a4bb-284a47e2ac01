@@ -127,6 +127,57 @@
             color: #0f0f0f;
         }
 
+        .menu-categories-bar {
+            position: sticky;
+            top: 5rem;
+            z-index: 40;
+            margin-bottom: 3rem;
+            margin-left: -1rem;
+            margin-right: -1rem;
+            padding: 0.75rem 1rem;
+            background: rgba(23, 23, 23, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .menu-categories-scroll {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 0.75rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding-bottom: 0.25rem;
+        }
+
+        .menu-categories-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .menu-categories-scroll .menu-category {
+            flex: 0 0 auto;
+            white-space: nowrap;
+        }
+
+        @media (min-width: 640px) {
+            .menu-categories-bar {
+                margin-left: -1.5rem;
+                margin-right: -1.5rem;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .menu-categories-bar {
+                margin-left: -2rem;
+                margin-right: -2rem;
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
         .fade-in {
             animation: fadeIn 0.6s ease-in;
         }
@@ -534,15 +585,12 @@
                     <span>Menu items may contain or come in contact with Wheat, Eggs, Tree Nuts &amp; Milk</span>
                 </div>
             </div>
+            <div id="menu-sticky-container">
             <!-- Menu Categories -->
-            <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <div class="menu-categories-bar" id="menu-categories-bar">
+                <div class="menu-categories-scroll" role="tablist" aria-label="Menu categories">
                 <button
                     class="menu-category active px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
-                    data-category="all" onclick="filterMenu('all')">
-                    All Items
-                </button>
-                <button
-                    class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
                     data-category="starters" onclick="filterMenu('starters')">
                     Starters
                 </button>
@@ -611,10 +659,12 @@
                     data-category="house-drinks" onclick="filterMenu('house-drinks')">
                     House Drinks
                 </button>
+                </div>
             </div>
             <!-- Menu Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-grid">
                 <!-- Menu items will be populated by JavaScript -->
+            </div>
             </div>
             <noscript>
                 <div class="mt-8 bg-neutral-800 border border-neutral-700 rounded-2xl p-6">
@@ -1345,41 +1395,17 @@
             { name: "Saratoga Water", description: "Still / Sparkling", price: "$6", category: "house-drinks" },
         ];
 
-        const categoryLabels = {
-            "starters": "Starters",
-            "street-side-chaat": "Street Side Chaat",
-            "indo-chinese": "Indo Chinese",
-            "vegetarian": "Vegetarian",
-            "vegan": "Vegan",
-            "chicken": "Chicken",
-            "lamb-goat": "Lamb / Goat",
-            "tandoori": "Tandoori",
-            "seafood": "Seafood",
-            "rice-dishes": "Rice Dishes",
-            "sides": "Sides",
-            "breads": "Breads",
-            "desserts": "Desserts",
-            "house-drinks": "House Drinks",
-        };
-
         // Render Menu
-        function renderMenu(category = 'all') {
+        function renderMenu(category = 'starters') {
             const grid = document.getElementById('menu-grid');
             grid.innerHTML = '';
 
-            const filtered = category === 'all'
-                ? menuItems
-                : menuItems.filter(item => item.category === category);
+            const filtered = menuItems.filter(item => item.category === category);
 
             filtered.forEach((item, index) => {
                 const card = document.createElement('div');
                 card.className = 'menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 fade-in';
                 card.style.animationDelay = `${index * 0.05}s`;
-                const categoryMeta = category === 'all'
-                    ? `<div class="mt-a pt-4 border-t border-neutral-700 flex items-center justify-between">
-                        <span class="text-xs text-neutral-500 uppercase tracking-wider">${categoryLabels[item.category] || item.category}</span>
-                    </div>`
-                    : '';
 
                 card.innerHTML = `
                     <div class="flex justify-between items-start mb-3">
@@ -1387,28 +1413,40 @@
                         <span class="text-gold font-bold text-lg">${item.price}</span>
                     </div>
                     <p class="text-neutral-400 text-sm leading-relaxed">${item.description}</p>
-                    ${categoryMeta}
                 `;
                 grid.appendChild(card);
             });
         }
 
+        function scrollToMenuView() {
+            const container = document.getElementById('menu-sticky-container');
+            const nav = document.querySelector('nav');
+            if (!container) return;
+
+            const navHeight = nav ? nav.offsetHeight : 80;
+            const top = container.getBoundingClientRect().top + window.scrollY - navHeight;
+            window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
+        }
+
         // Filter Function
         function filterMenu(category) {
-            // Update active button
             document.querySelectorAll('.menu-category').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.dataset.category === category) {
                     btn.classList.add('active');
+                    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                 }
             });
 
-            // Render items
             renderMenu(category);
+            // Wait for grid layout after re-render so scroll lands on category bar + first item row
+            requestAnimationFrame(() => {
+                requestAnimationFrame(scrollToMenuView);
+            });
         }
 
         // Initialize
-        renderMenu();
+        renderMenu('starters');
 
         // Hero image slider
         const heroSlides = document.querySelectorAll('.hero-slide');
