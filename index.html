@@ -100,7 +100,8 @@
         input[type="button"],
         a.delivery-badge,
         a.bg-gold,
-        a.border-2.rounded-full {
+        a.btn-cta-outline,
+        a.border-2.rounded-none {
             transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
             transform: scale(1);
         }
@@ -110,7 +111,8 @@
         input[type="button"]:hover,
         a.delivery-badge:hover,
         a.bg-gold:hover,
-        a.border-2.rounded-full:hover {
+        a.btn-cta-outline:hover,
+        a.border-2.rounded-none:hover {
             transform: scale(1.02);
         }
 
@@ -119,7 +121,8 @@
         input[type="button"]:active,
         a.delivery-badge:active,
         a.bg-gold:active,
-        a.border-2.rounded-full:active {
+        a.btn-cta-outline:active,
+        a.border-2.rounded-none:active {
             transform: scale(0.95);
             transition-duration: 0.1s;
         }
@@ -354,7 +357,7 @@
 <a class="block px-3 py-2 text-sm text-neutral-200 hover:text-gold hover:bg-neutral-800 rounded" href="https://www.toasttab.com/jaiporebrookfield/marketing-signup" rel="noopener noreferrer" target="_blank">Brookfield</a>
 </div>
 </div>
-<a class="bg-gold text-black px-6 py-2.5 rounded-full font-semibold hover:bg-yellow-500 flex items-center gap-2" href="#order-online">
+<a class="btn-cta-outline border-2 border-gold text-white px-6 py-2.5 rounded-none font-semibold hover:bg-gold hover:text-black flex items-center gap-2 transition-colors" href="#order-online">
 <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                         Order Now
                     </a>
@@ -404,9 +407,6 @@
 </div>
 <div class="absolute inset-0 bg-black/65"></div>
 <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-<div class="inline-block mb-6 px-4 py-1.5 rounded-full border border-gold/30 bg-gold/10 text-gold text-sm font-medium tracking-wider uppercase">
-                Authentic Indian Cuisine
-            </div>
 <h1 class="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
 <span class="seo-hidden">Authentic <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold to-yellow-600">Indian</span>
                     Restaurant in Ridgefield, CT</span>
@@ -417,11 +417,11 @@
                 traditional recipes, and a modern twist on classic Indian culture.
             </p>
 <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-<a class="bg-gold text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-500 shadow-lg shadow-gold/25 flex items-center gap-2" href="#menu">
+<a class="bg-gold text-black px-8 py-4 rounded-none font-bold text-lg hover:bg-yellow-500 shadow-lg shadow-gold/25 flex items-center gap-2" href="#menu">
 <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"></path><path d="M7 2v20"></path><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"></path></svg>
                     View Menu
                 </a>
-<a class="border-2 border-neutral-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:border-gold hover:text-gold flex items-center gap-2" href="#locations">
+<a class="border-2 border-neutral-600 text-white px-8 py-4 rounded-none font-bold text-lg hover:border-gold hover:text-gold flex items-center gap-2" href="#locations">
 <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
                     Find Location
                 </a>
@@ -511,46 +511,46 @@
 <!-- Menu Categories -->
 <div class="menu-categories-bar" id="menu-categories-bar">
 <div aria-label="Menu categories" class="menu-categories-scroll" role="tablist">
-<button class="menu-category active px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="starters" onclick="filterMenu('starters')">
+<button class="menu-category active px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="starters" onclick="filterMenu('starters')">
                     Starters
                 </button>
-<button class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="street-side-chaat" onclick="filterMenu('street-side-chaat')">
+<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="street-side-chaat" onclick="filterMenu('street-side-chaat')">
                     Street Side Chaat
                 </button>
-<button class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="indo-chinese" onclick="filterMenu('indo-chinese')">
+<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="indo-chinese" onclick="filterMenu('indo-chinese')">
                     Indo Chinese
                 </button>
-<button class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="vegetarian" onclick="filterMenu('vegetarian')">
+<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="vegetarian" onclick="filterMenu('vegetarian')">
                     Vegetarian
                 </button>
-<button class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="vegan" onclick="filterMenu('vegan')">
+<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="vegan" onclick="filterMenu('vegan')">
                     Vegan
                 </button>
-<button class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="chicken" onclick="filterMenu('chicken')">
+<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="chicken" onclick="filterMenu('chicken')">
                     Chicken
                 </button>
-<button class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="lamb-goat" onclick="filterMenu('lamb-goat')">
+<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="lamb-goat" onclick="filterMenu('lamb-goat')">
                     Lamb / Goat
                 </button>
-<button class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="tandoori" onclick="filterMenu('tandoori')">
+<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="tandoori" onclick="filterMenu('tandoori')">
                     Tandoori
                 </button>
-<button class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="seafood" onclick="filterMenu('seafood')">
+<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="seafood" onclick="filterMenu('seafood')">
                     Seafood
                 </button>
-<button class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="rice-dishes" onclick="filterMenu('rice-dishes')">
+<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="rice-dishes" onclick="filterMenu('rice-dishes')">
                     Rice Dishes
                 </button>
-<button class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="sides" onclick="filterMenu('sides')">
+<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="sides" onclick="filterMenu('sides')">
                     Sides
                 </button>
-<button class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="breads" onclick="filterMenu('breads')">
+<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="breads" onclick="filterMenu('breads')">
                     Breads
                 </button>
-<button class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="desserts" onclick="filterMenu('desserts')">
+<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="desserts" onclick="filterMenu('desserts')">
                     Desserts
                 </button>
-<button class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="house-drinks" onclick="filterMenu('house-drinks')">
+<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="house-drinks" onclick="filterMenu('house-drinks')">
                     House Drinks
                 </button>
 </div>
@@ -574,7 +574,7 @@
 </div>
 </noscript>
 <!-- Xpress Lunch -->
-<div class="mt-16 bg-gold/10 border border-gold/30 rounded-2xl p-8 md:p-10">
+<div class="mt-16 bg-gold/10 border border-gold/30 rounded-2xl">
 <div class="text-center mb-8">
 <div class="flex items-center justify-center gap-3 mb-3">
 <svg aria-hidden="true" class="w-6 h-6 text-gold" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
