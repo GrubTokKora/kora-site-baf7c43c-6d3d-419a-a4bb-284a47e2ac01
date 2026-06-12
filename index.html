@@ -347,7 +347,8 @@
     <nav class="fixed w-full z-50 glass-nav border-b border-neutral-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex items-center space-x-3">
+                <a class="flex items-center space-x-3 hover:opacity-90 transition-opacity" href="./"
+                    id="site-logo-home" aria-label="Jaipore Xpress home">
                     <div class="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center">
                         <img alt="Jaipore Xpress logo" class="w-full h-full object-contain" decoding="async"
                             height="175"
@@ -356,7 +357,7 @@
                     </div>
                     <span class="font-display text-2xl font-bold text-white tracking-wide">Jaipore<span
                             class="text-gold">Xpress</span></span>
-                </div>
+                </a>
                 <div class="nav-desktop">
                     <a class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider"
                         href="#about">About</a>
@@ -1526,6 +1527,18 @@
             document.getElementById('hero-next')?.addEventListener('click', goToNextHeroSlide);
             document.getElementById('hero-prev')?.addEventListener('click', goToPrevHeroSlide);
         }
+
+        // Logo / home — scroll to top and reload page
+        document.getElementById('site-logo-home')?.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.getElementById('mobile-menu')?.classList.add('hidden');
+            const homeUrl = window.location.pathname + window.location.search;
+            if (window.location.hash || window.scrollY > 0) {
+                window.location.href = homeUrl;
+            } else {
+                window.location.reload();
+            }
+        });
 
         // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
