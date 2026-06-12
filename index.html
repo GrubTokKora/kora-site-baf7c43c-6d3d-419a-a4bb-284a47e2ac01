@@ -122,9 +122,34 @@
             backdrop-filter: blur(20px);
         }
 
-        .menu-category {
-            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, color 0.2s ease;
+        /* Bouncy scale interaction — buttons & CTA links site-wide */
+        button,
+        input[type="submit"],
+        input[type="button"],
+        a.delivery-badge,
+        a.bg-gold,
+        a.border-2.rounded-full {
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
             transform: scale(1);
+        }
+
+        button:hover,
+        input[type="submit"]:hover,
+        input[type="button"]:hover,
+        a.delivery-badge:hover,
+        a.bg-gold:hover,
+        a.border-2.rounded-full:hover {
+            transform: scale(1.02);
+        }
+
+        button:active,
+        input[type="submit"]:active,
+        input[type="button"]:active,
+        a.delivery-badge:active,
+        a.bg-gold:active,
+        a.border-2.rounded-full:active {
+            transform: scale(0.95);
+            transition-duration: 0.1s;
         }
 
         .menu-category:hover,
@@ -133,21 +158,12 @@
             color: #0f0f0f;
         }
 
-        .menu-category:hover {
-            transform: scale(1.08);
-        }
-
         .menu-category.active {
             transform: scale(1.03);
         }
 
         .menu-category.active:hover {
             transform: scale(1.08);
-        }
-
-        .menu-category:active {
-            transform: scale(0.92);
-            transition-duration: 0.1s;
         }
 
         .menu-categories-bar {
@@ -171,7 +187,7 @@
             overflow-y: hidden;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            padding-bottom: 0.25rem;
+            padding: 0.25rem 0;
         }
 
         .menu-categories-scroll::-webkit-scrollbar {
@@ -240,11 +256,6 @@
             background: transparent;
             border-radius: 0.375rem;
             overflow: hidden;
-            transition: transform 0.2s ease;
-        }
-
-        .delivery-badge:hover {
-            transform: scale(1.05);
         }
 
         .delivery-badge img {
@@ -407,7 +418,7 @@
                                 rel="noopener noreferrer" target="_blank">Brookfield</a>
                         </div>
                     </div>
-                    <a class="bg-gold text-black px-6 py-2.5 rounded-full font-semibold hover:bg-yellow-500 transition-all transform hover:scale-105 flex items-center gap-2"
+                    <a class="bg-gold text-black px-6 py-2.5 rounded-full font-semibold hover:bg-yellow-500 flex items-center gap-2"
                         href="#order-online">
                         <i class="w-4 h-4" data-lucide="phone"></i>
                         Order Now
@@ -502,12 +513,12 @@
                 traditional recipes, and a modern twist on classic Indian culture.
             </p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <a class="bg-gold text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-500 transition-all transform hover:scale-105 shadow-lg shadow-gold/25 flex items-center gap-2"
+                <a class="bg-gold text-black px-8 py-4 rounded-full font-bold text-lg hover:bg-yellow-500 shadow-lg shadow-gold/25 flex items-center gap-2"
                     href="#menu">
                     <i class="w-5 h-5" data-lucide="utensils"></i>
                     View Menu
                 </a>
-                <a class="border-2 border-neutral-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:border-gold hover:text-gold transition-all flex items-center gap-2"
+                <a class="border-2 border-neutral-600 text-white px-8 py-4 rounded-full font-bold text-lg hover:border-gold hover:text-gold flex items-center gap-2"
                     href="#locations">
                     <i class="w-5 h-5" data-lucide="map-pin"></i>
                     Find Location
