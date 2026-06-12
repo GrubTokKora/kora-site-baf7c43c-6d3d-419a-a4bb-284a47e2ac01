@@ -41,10 +41,18 @@
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
         onload="this.onload=null;this.rel='stylesheet'" rel="preload" />
     <noscript>
-        <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
-            rel="stylesheet" />
-    </noscript>
+                <div class="mt-8 bg-neutral-800 border border-neutral-700 rounded-2xl p-6">
+                    <h3 class="font-display text-xl font-bold text-white mb-4">Menu Highlights</h3>
+                    <ul class="space-y-2 text-neutral-300 text-sm">
+                        <li><strong class="text-gold">Starters:</strong> Veg Samosa, Masala Dosa, Kalmi Kabab</li>
+                        <li><strong class="text-gold">Chicken:</strong> Butter Chicken, Chicken Tikka Masala</li>
+                        <li><strong class="text-gold">Lamb / Goat:</strong> Lamb Rogan Josh, Goat Curry</li>
+                        <li><strong class="text-gold">Breads:</strong> Naan, Garlic Naan, Whole Wheat Roti</li>
+                        <li><strong class="text-gold">Desserts:</strong> Gulab Jamun, Rasmalai, Kulfi</li>
+                    </ul>
+                    <p class="text-neutral-500 text-xs mt-4">Full menu requires JavaScript.</p>
+                </div>
+            </noscript>
     <link href="assets/styles.css" rel="stylesheet" />
     <style>
         body {
@@ -535,13 +543,58 @@
                 </button>
                 <button
                     class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
-                    data-category="appetizers" onclick="filterMenu('appetizers')">
-                    Appetizers
+                    data-category="starters" onclick="filterMenu('starters')">
+                    Starters
                 </button>
                 <button
                     class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
-                    data-category="entrees" onclick="filterMenu('entrees')">
-                    Entrees
+                    data-category="street-side-chaat" onclick="filterMenu('street-side-chaat')">
+                    Street Side Chaat
+                </button>
+                <button
+                    class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
+                    data-category="indo-chinese" onclick="filterMenu('indo-chinese')">
+                    Indo Chinese
+                </button>
+                <button
+                    class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
+                    data-category="vegetarian" onclick="filterMenu('vegetarian')">
+                    Vegetarian
+                </button>
+                <button
+                    class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
+                    data-category="vegan" onclick="filterMenu('vegan')">
+                    Vegan
+                </button>
+                <button
+                    class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
+                    data-category="chicken" onclick="filterMenu('chicken')">
+                    Chicken
+                </button>
+                <button
+                    class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
+                    data-category="lamb-goat" onclick="filterMenu('lamb-goat')">
+                    Lamb / Goat
+                </button>
+                <button
+                    class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
+                    data-category="tandoori" onclick="filterMenu('tandoori')">
+                    Tandoori
+                </button>
+                <button
+                    class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
+                    data-category="seafood" onclick="filterMenu('seafood')">
+                    Seafood
+                </button>
+                <button
+                    class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
+                    data-category="rice-dishes" onclick="filterMenu('rice-dishes')">
+                    Rice Dishes
+                </button>
+                <button
+                    class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
+                    data-category="sides" onclick="filterMenu('sides')">
+                    Sides
                 </button>
                 <button
                     class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
@@ -553,6 +606,11 @@
                     data-category="desserts" onclick="filterMenu('desserts')">
                     Desserts
                 </button>
+                <button
+                    class="menu-category px-6 py-2.5 rounded-full border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider"
+                    data-category="house-drinks" onclick="filterMenu('house-drinks')">
+                    House Drinks
+                </button>
             </div>
             <!-- Menu Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-grid">
@@ -562,23 +620,54 @@
                 <div class="mt-8 bg-neutral-800 border border-neutral-700 rounded-2xl p-6">
                     <h3 class="font-display text-xl font-bold text-white mb-4">Menu Highlights</h3>
                     <ul class="space-y-2 text-neutral-300 text-sm">
-                        <li><strong class="text-gold">Appetizers:</strong> Samosa, Paneer Tikka</li>
-                        <li><strong class="text-gold">Entrees:</strong> Butter Chicken, Palak Paneer, Biryani</li>
-                        <li><strong class="text-gold">Breads:</strong> Naan, Garlic Naan, Paratha</li>
+                        <li><strong class="text-gold">Starters:</strong> Veg Samosa, Masala Dosa, Kalmi Kabab</li>
+                        <li><strong class="text-gold">Chicken:</strong> Butter Chicken, Chicken Tikka Masala</li>
+                        <li><strong class="text-gold">Lamb / Goat:</strong> Lamb Rogan Josh, Goat Curry</li>
+                        <li><strong class="text-gold">Breads:</strong> Naan, Garlic Naan, Whole Wheat Roti</li>
                         <li><strong class="text-gold">Desserts:</strong> Gulab Jamun, Rasmalai, Kulfi</li>
                     </ul>
                     <p class="text-neutral-500 text-xs mt-4">Full menu requires JavaScript.</p>
                 </div>
             </noscript>
-            <!-- Lunch Special Note -->
-            <div class="mt-16 text-center bg-gold/10 border border-gold/30 rounded-2xl p-8 max-w-3xl mx-auto">
-                <div class="flex items-center justify-center gap-3 mb-3">
-                    <i class="w-6 h-6 text-gold" data-lucide="sun"></i>
-                    <h3 class="font-display text-2xl font-bold text-gold">Lunch Special</h3>
+            <!-- Xpress Lunch -->
+            <div class="mt-16 bg-gold/10 border border-gold/30 rounded-2xl p-8 md:p-10">
+                <div class="text-center mb-8">
+                    <div class="flex items-center justify-center gap-3 mb-3">
+                        <i class="w-6 h-6 text-gold" data-lucide="sun"></i>
+                        <h3 class="font-display text-2xl md:text-3xl font-bold text-gold">Xpress Lunch</h3>
+                    </div>
+                    <p class="text-neutral-300 text-lg">Monday – Friday &middot; 11:30am – 2:30pm</p>
+                    <p class="text-neutral-400 mt-2">Served with naan, rice and dal of the day</p>
                 </div>
-                <p class="text-neutral-300 text-lg">Available daily from 11:30am - 2:30pm</p>
-                <p class="text-neutral-400 mt-2">Ask about our special lunch combinations featuring your favorite
-                    entrees with rice and naan</p>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div
+                        class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-display text-xl font-bold text-white">Vegetable</h3>
+                            <span class="text-gold font-bold text-lg">$15</span>
+                        </div>
+                        <p class="text-neutral-400 text-sm leading-relaxed">Saag Paneer &middot; Aloo Gobi &middot;
+                            Paneer Butter Masala &middot; Navratan Korma &middot; Channa Masala</p>
+                    </div>
+                    <div
+                        class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-display text-xl font-bold text-white">Chicken</h3>
+                            <span class="text-gold font-bold text-lg">$16</span>
+                        </div>
+                        <p class="text-neutral-400 text-sm leading-relaxed">Chicken Tikka Masala &middot; Chicken Saag
+                            &middot; Chicken Korma &middot; Coondapur Chicken &middot; Chicken Vindaloo</p>
+                    </div>
+                    <div
+                        class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50">
+                        <div class="flex justify-between items-start mb-3">
+                            <h3 class="font-display text-xl font-bold text-white">Lamb</h3>
+                            <span class="text-gold font-bold text-lg">$19</span>
+                        </div>
+                        <p class="text-neutral-400 text-sm leading-relaxed">Lamb Rogan Josh &middot; Lamb Saag &middot;
+                            Lamb Vindaloo &middot; Lamb Korma &middot; Lamb Butter Masala</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1177,54 +1266,101 @@
         // Initialize Lucide icons
         lucide.createIcons();
 
-        // Menu Data from PDF
+        // Menu Data from PDF (2026) — Xpress Lunch excluded
         const menuItems = [
-            // Appetizers
-            { name: "Pappadum", description: "Lentil wafers served with chutney", price: "$5", category: "appetizers" },
-            { name: "Samosa", description: "Crispy pastry filled with spiced potatoes and peas", price: "$8", category: "appetizers" },
-            { name: "Vegetable Pakora", description: "Mixed vegetable fritters in chickpea batter", price: "$8", category: "appetizers" },
-            { name: "Chicken Pakora", description: "Tender chicken pieces in spiced batter", price: "$10", category: "appetizers" },
-            { name: "Paneer Tikka", description: "Grilled cottage cheese with peppers and onions", price: "$14", category: "appetizers" },
-            { name: "Chicken Tikka", description: "Tandoori grilled chicken marinated in yogurt and spices", price: "$14", category: "appetizers" },
-            { name: "Seekh Kebab", description: "Minced lamb skewers with aromatic spices", price: "$16", category: "appetizers" },
-            { name: "Mixed Appetizer Platter", description: "Assortment of our favorite starters", price: "$18", category: "appetizers" },
-
-            // Entrees (Curries & Specialties)
-            { name: "Butter Chicken", description: "Tandoori chicken in rich tomato cream sauce", price: "$19", category: "entrees" },
-            { name: "Chicken Tikka Masala", description: "Grilled chicken in spiced curry sauce", price: "$19", category: "entrees" },
-            { name: "Chicken Curry", description: "Classic chicken curry with onions and tomatoes", price: "$18", category: "entrees" },
-            { name: "Lamb Curry", description: "Tender lamb in traditional spice blend", price: "$22", category: "entrees" },
-            { name: "Lamb Vindaloo", description: "Spicy Goan-style lamb curry with potatoes", price: "$22", category: "entrees" },
-            { name: "Rogan Josh", description: "Kashmiri lamb curry with yogurt and spices", price: "$22", category: "entrees" },
-            { name: "Shrimp Curry", description: "Fresh shrimp in coconut curry sauce", price: "$23", category: "entrees" },
-            { name: "Fish Curry", description: "Daily fresh fish in tangy curry", price: "$23", category: "entrees" },
-            { name: "Palak Paneer", description: "Cottage cheese in creamy spinach", price: "$17", category: "entrees" },
-            { name: "Paneer Tikka Masala", description: "Cottage cheese in rich masala sauce", price: "$18", category: "entrees" },
-            { name: "Chana Masala", description: "Chickpeas in spiced tomato gravy", price: "$16", category: "entrees" },
-            { name: "Aloo Gobi", description: "Potatoes and cauliflower with spices", price: "$16", category: "entrees" },
-            { name: "Baingan Bharta", description: "Smoked eggplant with onions and tomatoes", price: "$17", category: "entrees" },
-            { name: "Vegetable Korma", description: "Mixed vegetables in creamy cashew sauce", price: "$18", category: "entrees" },
-            { name: "Dal Makhani", description: "Creamy black lentils slow-cooked overnight", price: "$16", category: "entrees" },
-            { name: "Dal Tadka", description: "Yellow lentils tempered with spices", price: "$15", category: "entrees" },
-            { name: "Biryani (Chicken)", description: "Aromatic basmati rice with chicken and saffron", price: "$20", category: "entrees" },
-            { name: "Biryani (Lamb)", description: "Fragrant rice with tender lamb pieces", price: "$22", category: "entrees" },
-            { name: "Biryani (Shrimp)", description: "Saffron rice with succulent shrimp", price: "$23", category: "entrees" },
-            { name: "Biryani (Vegetable)", description: "Mixed vegetables with aromatic spices", price: "$18", category: "entrees" },
-
-            // Breads
-            { name: "Naan", description: "Leavened bread baked in tandoor", price: "$3", category: "breads" },
-            { name: "Garlic Naan", description: "Naan topped with fresh garlic and cilantro", price: "$4", category: "breads" },
-            { name: "Roti", description: "Whole wheat unleavened bread", price: "$3", category: "breads" },
-            { name: "Paratha", description: "Layered whole wheat bread", price: "$4", category: "breads" },
-            { name: "Aloo Paratha", description: "Stuffed with spiced potatoes", price: "$5", category: "breads" },
-            { name: "Paneer Kulcha", description: "Stuffed with cottage cheese", price: "$6.5", category: "breads" },
-
-            // Desserts
-            { name: "Gulab Jamun", description: "Warm milk dumplings in rose syrup", price: "$5", category: "desserts" },
-            { name: "Rasmalai", description: "Soft cheese patties in saffron milk", price: "$5", category: "desserts" },
-            { name: "Kulfi", description: "Traditional Indian ice cream", price: "$5", category: "desserts" },
-            { name: "Coconut Cheese", description: "Sweet coconut and cheese delicacy", price: "$7", category: "desserts" }
+            { name: "Lentil Soup", description: "A vegan classic, coconut milk, peppercorn infused tempering", price: "$8", category: "starters" },
+            { name: "Veg Samosa", description: "A blend of peas and potatoes in a savory fold", price: "$9", category: "starters" },
+            { name: "Pakhora", description: "Choice of onions or potato fritters in carom seed infused chickpea batter", price: "$10", category: "starters" },
+            { name: "Lassoni Gobi", description: "Handpicked corn battered cauliflower in tangy garlic tomato", price: "$15", category: "starters" },
+            { name: "Kalmi Kabab", description: "Skewered charcoal baked wings in house blend spices", price: "$16", category: "starters" },
+            { name: "Luchi Bagari Jinga", description: "Tiger shrimp in honey infused tomato cream and mustard tempering, served with wheat bread", price: "$17", category: "starters" },
+            { name: "Masala Dosa", description: "Crispy crepe made of fermented rice and lentil with spiced potato stuffing", price: "$18", category: "starters" },
+            { name: "Iddly", description: "Fermented rice cakes served with sambar and coconut chutney", price: "$15", category: "starters" },
+            { name: "Imli Baingan", description: "Dates & tamarind sauce layered over crisp batter fried eggplant", price: "$14", category: "street-side-chaat" },
+            { name: "Samosa Chaat", description: "Mashed samosas over chickpeas layered with tamarind onions and sev", price: "$14", category: "street-side-chaat" },
+            { name: "Paapdi Chaat", description: "Fried crisp savory topped with tamarind, green chutney and onions", price: "$12", category: "street-side-chaat" },
+            { name: "Chilli Chicken", description: "Corn battered chicken tossed in soy and chilli tomato", price: "$17", category: "indo-chinese" },
+            { name: "Chilli Paneer", description: "Corn battered cheese tossed in soy and chilli tomato", price: "$16", category: "indo-chinese" },
+            { name: "Mango Chicken", description: "Battered chicken tossed with cumin infused spiced mango glaze", price: "$17", category: "indo-chinese" },
+            { name: "Gobi Manchurian", description: "Cauliflower tossed into minced veggies and soy tomato glaze", price: "$16", category: "indo-chinese" },
+            { name: "Veg Fried Rice", description: "Long grain basmati tossed with vegetable soy and tomato", price: "$14", category: "indo-chinese" },
+            { name: "Paneer Butter Masala", description: "Paneer cheese dices in smoked bell pepper infused tomato cream and clarified butter", price: "$19", category: "vegetarian" },
+            { name: "Malai Kofta", description: "Paneer cheese, raisin, turmeric infused veg dumplings in cashew cream sauce with bayleaf", price: "$19", category: "vegetarian" },
+            { name: "Navratan Korma", description: "Paneer, pineapple, sautéed vegetables in spiced cashew cream sauce", price: "$19", category: "vegetarian" },
+            { name: "Saag Paneer", description: "A classic curry dish made with blanched puree of fresh spinach with onions, spices, paneer and herbs", price: "$19", category: "vegetarian" },
+            { name: "Matar Paneer", description: "Turmeric infused green peas and paneer in spiced onion and cream", price: "$19", category: "vegetarian" },
+            { name: "Daal Makhani", description: "Simmered black lentils in cream, tempered with sundried chili and freshly diced tomatoes", price: "$18", category: "vegetarian" },
+            { name: "Aloo Gobi", description: "A homestyle low flamed preparation of potatoes and cauliflower with ginger and garlic", price: "$19", category: "vegan" },
+            { name: "Aloo Dhansak", description: "A stewed potato dish with pressure cooked lentils, spinach with a hint of tamarind", price: "$19", category: "vegan" },
+            { name: "Tadka Daal", description: "Pressure cooked mildly spiced yellow lentils finished with crackled mustard and curry leaf", price: "$17", category: "vegan" },
+            { name: "Channa Masala", description: "Chickpea curry infused with tamarind and sundried mango powder", price: "$17", category: "vegan" },
+            { name: "Jeera Aloo", description: "Potatoes tossed into roasted cumin and onions", price: "$16", category: "vegan" },
+            { name: "Chicken Tikka Masala", description: "Popular boneless barbecued chicken in tomato and cream", price: "$23", category: "chicken" },
+            { name: "Butter Chicken", description: "Charcoal oven baked strips of chicken in smoked pepper infused cream and tomato", price: "$22", category: "chicken" },
+            { name: "Chicken Saag", description: "Curried chicken in spiced spinach puree and cream", price: "$22", category: "chicken" },
+            { name: "Coondapur Chicken", description: "Southern style coconut chicken curry tempered with mustard and curry leaves", price: "$21", category: "chicken" },
+            { name: "Chicken Korma", description: "A rich combination of cashew cream blend with onions with a hint of rose petal extract and saffron", price: "$22", category: "chicken" },
+            { name: "Chicken Chettinad", description: "Popular south indian dish with all spice and peppercorn and curry leaf tempering", price: "$22", category: "chicken" },
+            { name: "Chicken Vindaloo", description: "Sundried chili paste, vinegar and potatoes", price: "$20", category: "chicken" },
+            { name: "Chicken Aam Ras", description: "Puree of mango and cream infused curry sauce", price: "$20", category: "chicken" },
+            { name: "Lamb Rogan Josh", description: "A persian influenced passionate curry dish of Kashmir which dates back to the mughal regime", price: "$27", category: "lamb-goat" },
+            { name: "Butter Lamb Masala", description: "Simmered lamb curry infused with cream and tomato", price: "$27", category: "lamb-goat" },
+            { name: "Lamb Madras", description: "Curried lamb cooked in freshly strained coconut milk with mustard, curry leaf tempering", price: "$27", category: "lamb-goat" },
+            { name: "Lamb Korma", description: "A rich combination of cashew cream blend with onions, rose petal extract and saffron", price: "$27", category: "lamb-goat" },
+            { name: "Lamb Saag", description: "Curried lamb in pureed spinach and cream", price: "$27", category: "lamb-goat" },
+            { name: "Lamb Vindaloo", description: "Sundried chili paste with vinegar and potatoes", price: "$27", category: "lamb-goat" },
+            { name: "Goat Curry", description: "Curry of simmered young goat on the bone", price: "$27", category: "lamb-goat" },
+            { name: "Chicken Tandoori", description: "Barbecue style charcoal baked chicken on the bone in spiced strained yoghurt marinade", price: "$23", category: "tandoori" },
+            { name: "Chicken Malai Kabab", description: "Barbecue style mildly cardamom spiced tenders in a cream cheese marinade", price: "$22", category: "tandoori" },
+            { name: "Shrimp Malai Kabab", description: "Tiger shrimp in mildly spiced cream marinade", price: "$28", category: "tandoori" },
+            { name: "Salmon Moilee", description: "Fillet of fish over mustard and curry leaf tempered coconut sauce", price: "$28", category: "seafood" },
+            { name: "Chingiri Malai Curry", description: "East indian favorite shrimp dish with coconut milk and home ground spices", price: "$27", category: "seafood" },
+            { name: "Shrimp Tadka Masala", description: "Curry leaf and mustard seed tempered cream and tomato sauce", price: "$27", category: "seafood" },
+            { name: "Shrimp Aam Ras", description: "Mango puree blend into curry sauce and finished with cream", price: "$27", category: "seafood" },
+            { name: "Biryani (Chicken)", description: "A unique blend of ground masala's tossed into long grain basmati rice", price: "$21", category: "rice-dishes" },
+            { name: "Biryani (Lamb)", description: "A unique blend of ground masala's tossed into long grain basmati rice", price: "$25", category: "rice-dishes" },
+            { name: "Biryani (Shrimp)", description: "A unique blend of ground masala's tossed into long grain basmati rice", price: "$26", category: "rice-dishes" },
+            { name: "Biryani (Veg. Paneer)", description: "A unique blend of ground masala's tossed into long grain basmati rice", price: "$19", category: "rice-dishes" },
+            { name: "Biryani (Goat)", description: "A unique blend of ground masala's tossed into long grain basmati rice", price: "$25", category: "rice-dishes" },
+            { name: "Coconut Rice", description: "Mustard, curry leaf and dry chilli tempered", price: "$14", category: "rice-dishes" },
+            { name: "Lemon Rice", description: "Turmeric and lemon infused rice", price: "$12", category: "rice-dishes" },
+            { name: "Raita", description: "Refreshing yoghurt relish - roasted cumin cucumber carrots", price: "$6", category: "sides" },
+            { name: "Mixed Pickle", description: "Pickled vegetables", price: "$5", category: "sides" },
+            { name: "Mango Chutney", description: "Sweet relish", price: "$6", category: "sides" },
+            { name: "Pappadum", description: "Lentil wafers", price: "$5", category: "sides" },
+            { name: "Naan (Plain)", description: "Clay oven baked white flour bread", price: "$5", category: "breads" },
+            { name: "Naan (Garlic)", description: "Clay oven baked white flour bread with garlic", price: "$6", category: "breads" },
+            { name: "Naan (Onion)", description: "Clay oven baked white flour bread with onion", price: "$6", category: "breads" },
+            { name: "Naan (Cheese)", description: "Clay oven baked white flour bread with cheese", price: "$7", category: "breads" },
+            { name: "Coconut Cheese Naan", description: "Clay oven baked bread with coconut and cheese", price: "$7", category: "breads" },
+            { name: "Whole Wheat Roti", description: "Traditional whole wheat flatbread", price: "$5", category: "breads" },
+            { name: "Corn Roti (Gluten Free)", description: "Gluten free corn flatbread", price: "$5", category: "breads" },
+            { name: "Gulab Jamun", description: "Warm milk dumplings in rose syrup", price: "$6", category: "desserts" },
+            { name: "Rice Pudding", description: "Traditional creamy rice dessert", price: "$6", category: "desserts" },
+            { name: "Rasmalai", description: "Soft cheese patties in saffron milk", price: "$7", category: "desserts" },
+            { name: "Kulfi", description: "Traditional Indian ice cream", price: "$4", category: "desserts" },
+            { name: "Sodas", description: "Coke / Diet Coke / Sprite / Ginger ale", price: "$3.50", category: "house-drinks" },
+            { name: "Masala Chai / Madras Coffee", description: "Traditional spiced tea or South Indian filter coffee", price: "$4", category: "house-drinks" },
+            { name: "Mango Lassi", description: "Refreshing mango yogurt drink", price: "$7", category: "house-drinks" },
+            { name: "Saratoga Water", description: "Still / Sparkling", price: "$6", category: "house-drinks" },
         ];
+
+        const categoryLabels = {
+            "starters": "Starters",
+            "street-side-chaat": "Street Side Chaat",
+            "indo-chinese": "Indo Chinese",
+            "vegetarian": "Vegetarian",
+            "vegan": "Vegan",
+            "chicken": "Chicken",
+            "lamb-goat": "Lamb / Goat",
+            "tandoori": "Tandoori",
+            "seafood": "Seafood",
+            "rice-dishes": "Rice Dishes",
+            "sides": "Sides",
+            "breads": "Breads",
+            "desserts": "Desserts",
+            "house-drinks": "House Drinks",
+        };
 
         // Render Menu
         function renderMenu(category = 'all') {
@@ -1241,7 +1377,7 @@
                 card.style.animationDelay = `${index * 0.05}s`;
                 const categoryMeta = category === 'all'
                     ? `<div class="mt-a pt-4 border-t border-neutral-700 flex items-center justify-between">
-                        <span class="text-xs text-neutral-500 uppercase tracking-wider">${item.category}</span>
+                        <span class="text-xs text-neutral-500 uppercase tracking-wider">${categoryLabels[item.category] || item.category}</span>
                     </div>`
                     : '';
 
