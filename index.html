@@ -107,7 +107,7 @@
         button,
         input[type="submit"],
         input[type="button"],
-        a.delivery-badge,
+        a.order-now-btn,
         a.bg-gold,
         a.btn-cta-outline,
         a.border-2.rounded-none {
@@ -118,7 +118,7 @@
         button:hover,
         input[type="submit"]:hover,
         input[type="button"]:hover,
-        a.delivery-badge:hover,
+        a.order-now-btn:hover,
         a.bg-gold:hover,
         a.btn-cta-outline:hover,
         a.border-2.rounded-none:hover {
@@ -128,7 +128,7 @@
         button:active,
         input[type="submit"]:active,
         input[type="button"]:active,
-        a.delivery-badge:active,
+        a.order-now-btn:active,
         a.bg-gold:active,
         a.btn-cta-outline:active,
         a.border-2.rounded-none:active {
@@ -217,35 +217,92 @@
             }
         }
 
-        .delivery-carousel {
+        .order-locations-grid {
+            max-width: 64rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .order-location-card {
             display: flex;
-            gap: 0.75rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            padding-bottom: 0.5rem;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: #fafafa;
+            border: 1px solid #e5e5e5;
+            border-radius: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .delivery-carousel::-webkit-scrollbar {
-            display: none;
+        .order-location-card:hover {
+            border-color: rgba(212, 175, 55, 0.45);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.06);
         }
 
-        .delivery-badge {
-            flex: 0 0 auto;
-            scroll-snap-align: start;
-            width: 210px;
-            height: 72px;
-            background: transparent;
-            border-radius: 0.375rem;
-            overflow: hidden;
+        .order-location-card h4 {
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
         }
 
-        .delivery-badge img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
+        .order-location-card h4::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 2.5rem;
+            height: 2px;
+            transform: translateX(-50%);
+            background: linear-gradient(90deg, #D4AF37 0%, #B8860B 100%);
+        }
+
+        .order-now-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 10rem;
+            padding: 0.625rem 2rem;
+            background-color: #D4AF37;
+            color: #0f0f0f;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            border-radius: 0;
+            box-shadow: 0 4px 14px rgba(212, 175, 55, 0.25);
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .order-now-btn:hover {
+            background-color: #eab308;
+            box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
+        }
+
+        .order-platforms-note {
+            margin-top: 1.25rem;
+            font-size: 0.875rem;
+            line-height: 1.6;
+            color: #737373;
+            max-width: 15rem;
+        }
+
+        @media (min-width: 1024px) {
+            .order-locations-grid {
+                grid-template-columns: repeat(6, 1fr);
+            }
+
+            .order-location-card {
+                grid-column: span 2;
+            }
+
+            .order-locations-grid > :nth-child(4) {
+                grid-column: 2 / span 2;
+            }
+
+            .order-locations-grid > :nth-child(5) {
+                grid-column: 4 / span 2;
+            }
         }
 
         .hero-slide {
@@ -715,97 +772,40 @@
 </div>
 <!-- Order Online Section - Below Location Cards -->
 <div class="pt-24 -mt-8 scroll-mt-6" id="order-online">
-<div class="text-center mb-10">
+<div class="text-center mb-12">
 <div class="inline-flex items-center gap-2 mb-4">
 <svg aria-hidden="true" class="w-5 h-5 text-gold" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></svg>
 <span class="text-neutral-500 text-sm uppercase tracking-wider">Order Online</span>
 </div>
 <h3 class="font-display text-2xl md:text-3xl font-bold text-neutral-900">Get Jaipore Delivered</h3>
-<p class="text-neutral-600 mt-2 max-w-xl mx-auto">Choose your nearest location and order through
-                        your favorite delivery platform.</p>
+<p class="text-neutral-600 mt-2 max-w-xl mx-auto">Order directly from your nearest location for pickup or delivery.</p>
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-<!-- Ridgefield Delivery Options -->
-<div class="text-center">
-<h3 class="font-display text-xl font-bold text-neutral-900 mb-6">Ridgefield, CT</h3>
-<div class="flex flex-wrap justify-center gap-4">
-<a class="delivery-badge" href="https://www.toasttab.com/jaiporexpress/v2/online-order#!" rel="noopener noreferrer" target="_blank">
-<img alt="Direct Order" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245737_2hktyk.png" width="300"/>
-</a>
-<a class="delivery-badge" href="https://www.grubhub.com/restaurant/jaipore-xpress-19-bailey-ave-ridgefield/527852" rel="noopener noreferrer" target="_blank">
-<img alt="GrubHub" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245699_5zhutw.png" width="300"/>
-</a>
-<a class="delivery-badge" href="https://www.ubereats.com/store/jaipore-express/Ojh63bERQ9CUo8wR3qRvXQ" rel="noopener noreferrer" target="_blank">
-<img alt="UberEats" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245723_vf4apd.png" width="300"/>
-</a>
-<a class="delivery-badge" href="https://www.doordash.com/store/jaipore-xpress-ridgefield-24458344/" rel="noopener noreferrer" target="_blank">
-<img alt="DoorDash" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245729_16njza.png" width="300"/>
-</a>
-</div>
-</div>
-<!-- Briarcliff Delivery Options -->
-<div class="text-center">
-<h3 class="font-display text-xl font-bold text-neutral-900 mb-6">Briarcliff, NY</h3>
-<div class="flex flex-wrap justify-center gap-4">
-<a class="delivery-badge" href="https://www.toasttab.com/jaiporepressny2/v2/online-order#!" rel="noopener noreferrer" target="_blank">
-<img alt="Direct Order" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245737_2hktyk.png" width="300"/>
-</a>
-<a class="delivery-badge" href="https://www.grubhub.com/restaurant/jaipore-xpress-1116-pleasantville-rd-briarcliff-manor/6034302" rel="noopener noreferrer" target="_blank">
-<img alt="GrubHub" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245699_5zhutw.png" width="300"/>
-</a>
-<a class="delivery-badge" href="https://www.ubereats.com/store/jaipore-xpress-briarcliff/TV2SaSHzWWYnjtpy7DKnMQ" rel="noopener noreferrer" target="_blank">
-<img alt="UberEats" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245723_vf4apd.png" width="300"/>
-</a>
-<a class="delivery-badge" href="https://www.doordash.com/store/jaipore-xpress-briarcliff-manor-24458344/" rel="noopener noreferrer" target="_blank">
-<img alt="DoorDash" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245729_16njza.png" width="300"/>
-</a>
-</div>
-</div>
-<!-- Guilford Delivery Options -->
-<div class="text-center">
-<h3 class="font-display text-xl font-bold text-neutral-900 mb-6">Guilford, CT</h3>
-<div class="flex flex-wrap justify-center gap-4">
-<a class="delivery-badge" href="https://www.toasttab.com/jaipore-express-guilford/v2/online-order#!" rel="noopener noreferrer" target="_blank">
-<img alt="Direct Order" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245737_2hktyk.png" width="300"/>
-</a>
-<a class="delivery-badge" href="https://www.grubhub.com/restaurant/jaipore-express-33-water-st-guilford/6034303" rel="noopener noreferrer" target="_blank">
-<img alt="GrubHub" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245699_5zhutw.png" width="300"/>
-</a>
-<a class="delivery-badge" href="https://www.doordash.com/store/jaipore-express-guilford-24458345/" rel="noopener noreferrer" target="_blank">
-<img alt="DoorDash" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245729_16njza.png" width="300"/>
-</a>
-</div>
-</div>
-<!-- Bedford Hills Delivery Options -->
-<div class="text-center">
-<h3 class="font-display text-xl font-bold text-neutral-900 mb-6">Bedford Hills, NY</h3>
-<div class="flex flex-wrap justify-center gap-4">
-<a class="delivery-badge" href="https://www.toasttab.com/jaiporebedford/v2/online-order#!" rel="noopener noreferrer" target="_blank">
-<img alt="Direct Order" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245737_2hktyk.png" width="300"/>
-</a>
-<a class="delivery-badge" href="https://www.grubhub.com/restaurant/jaipore-express-740-n-bedford-rd-bedford-hills/6034304" rel="noopener noreferrer" target="_blank">
-<img alt="GrubHub" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245699_5zhutw.png" width="300"/>
-</a>
-<a class="delivery-badge" href="https://www.doordash.com/store/jaipore-express-bedford-hills-24458346/" rel="noopener noreferrer" target="_blank">
-<img alt="DoorDash" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245729_16njza.png" width="300"/>
-</a>
-</div>
-</div>
-<!-- Brookfield Delivery Options -->
-<div class="text-center">
-<h3 class="font-display text-xl font-bold text-neutral-900 mb-6">Brookfield, CT</h3>
-<div class="flex flex-wrap justify-center gap-4">
-<a class="delivery-badge" href="https://order.toasttab.com/online/jaiporebrookfield" rel="noopener noreferrer" target="_blank">
-<img alt="Direct Order" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245737_2hktyk.png" width="300"/>
-</a>
-<a class="delivery-badge" href="https://www.ubereats.com/store/jaipore-xpress-brookfield-ct/8ouNPiFsU4CZuHwbuGbfig?diningMode=PICKUP&amp;ps=1&amp;sc=SEARCH_SUGGESTION" rel="noopener noreferrer" target="_blank">
-<img alt="UberEats" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245723_vf4apd.png" width="300"/>
-</a>
-<a class="delivery-badge" href="https://www.doordash.com/store/jaipore-xpress-brookfield-44209061/110298155/" rel="noopener noreferrer" target="_blank">
-<img alt="DoorDash" decoding="async" height="150" loading="lazy" src="https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245729_16njza.png" width="300"/>
-</a>
-</div>
-</div>
+<div class="order-locations-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<article class="order-location-card">
+<h4 class="font-display text-xl font-bold text-neutral-900">Ridgefield, CT</h4>
+<a class="order-now-btn" href="https://www.toasttab.com/jaiporexpress/v2/online-order#!" rel="noopener noreferrer" target="_blank">Order Now</a>
+<p class="order-platforms-note">We are also on UberEats, DoorDash and GrubHub.</p>
+</article>
+<article class="order-location-card">
+<h4 class="font-display text-xl font-bold text-neutral-900">Briarcliff, NY</h4>
+<a class="order-now-btn" href="https://www.toasttab.com/jaiporepressny2/v2/online-order#!" rel="noopener noreferrer" target="_blank">Order Now</a>
+<p class="order-platforms-note">We are also on UberEats, DoorDash and GrubHub.</p>
+</article>
+<article class="order-location-card">
+<h4 class="font-display text-xl font-bold text-neutral-900">Guilford, CT</h4>
+<a class="order-now-btn" href="https://www.toasttab.com/jaipore-express-guilford/v2/online-order#!" rel="noopener noreferrer" target="_blank">Order Now</a>
+<p class="order-platforms-note">We are also on DoorDash and GrubHub.</p>
+</article>
+<article class="order-location-card">
+<h4 class="font-display text-xl font-bold text-neutral-900">Bedford Hills, NY</h4>
+<a class="order-now-btn" href="https://www.toasttab.com/jaiporebedford/v2/online-order#!" rel="noopener noreferrer" target="_blank">Order Now</a>
+<p class="order-platforms-note">We are also on DoorDash and GrubHub.</p>
+</article>
+<article class="order-location-card">
+<h4 class="font-display text-xl font-bold text-neutral-900">Brookfield, CT</h4>
+<a class="order-now-btn" href="https://order.toasttab.com/online/jaiporebrookfield" rel="noopener noreferrer" target="_blank">Order Now</a>
+<p class="order-platforms-note">We are also on UberEats and DoorDash.</p>
+</article>
 </div>
 </div>
 </div>
