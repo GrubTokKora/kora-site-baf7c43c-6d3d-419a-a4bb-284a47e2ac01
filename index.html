@@ -329,6 +329,11 @@
             min-width: 0;
         }
 
+        .nav-desktop [data-nav].is-active,
+        .nav-mobile-menu [data-nav].is-active {
+            color: #D4AF37;
+        }
+
         .nav-desktop > a,
         .nav-desktop > .relative > button,
         .nav-desktop .btn-cta-outline {
@@ -414,7 +419,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;600;700&display=swap">
 <!-- KORA_GOOGLE_FONTS_END -->
 </link></link></head>
-<body class="bg-neutral-50 text-neutral-900 antialiased">
+<body class="bg-neutral-50 text-neutral-900 antialiased" data-page="home">
 <script>
         window.KORA_SITE_CONFIG = {
             apiBaseUrl: "https://kora-agent.grubtok.com",

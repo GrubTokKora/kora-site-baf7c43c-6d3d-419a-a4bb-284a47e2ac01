@@ -17,12 +17,12 @@ const HEADER_HTML = `
         <span class="font-display text-2xl font-bold text-white tracking-wide">Jaipore<span class="text-gold">Xpress</span></span>
       </a>
       <div class="nav-desktop">
-        <a class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider" href="${pageHref('#about')}">About</a>
-        <a class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider" href="${pageHref('#menu')}">Menu</a>
-        <a class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider" href="${pageHref('#locations')}">Locations</a>
-        <a class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider" href="${pageHref('#gallery')}">Gallery</a>
-        <a class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider" href="catering.html">Catering</a>
-        <a class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider" href="hiring.html">Hiring</a>
+        <a class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider" data-nav="about" href="${pageHref('#about')}">About</a>
+        <a class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider" data-nav="menu" href="${pageHref('#menu')}">Menu</a>
+        <a class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider" data-nav="locations" href="${pageHref('#locations')}">Locations</a>
+        <a class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider" data-nav="gallery" href="${pageHref('#gallery')}">Gallery</a>
+        <a class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider" data-nav="catering" href="catering.html">Catering</a>
+        <a class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider" data-nav="hiring" href="hiring.html">Hiring</a>
         <div class="relative group">
           <button class="text-neutral-300 hover:text-gold transition-colors text-sm font-medium uppercase tracking-wider inline-flex items-center gap-1" type="button">
             Gift Card
@@ -61,12 +61,12 @@ const HEADER_HTML = `
   </div>
   <div class="nav-mobile-menu hidden bg-neutral-900 border-t border-neutral-800" id="mobile-menu">
     <div class="px-4 pt-2 pb-6 space-y-1">
-      <a class="block px-3 py-3 text-neutral-300 hover:text-gold" href="${pageHref('#about')}">About</a>
-      <a class="block px-3 py-3 text-neutral-300 hover:text-gold" href="${pageHref('#menu')}">Menu</a>
-      <a class="block px-3 py-3 text-neutral-300 hover:text-gold" href="${pageHref('#locations')}">Locations</a>
-      <a class="block px-3 py-3 text-neutral-300 hover:text-gold" href="${pageHref('#gallery')}">Gallery</a>
-      <a class="block px-3 py-3 text-neutral-300 hover:text-gold" href="catering.html">Catering</a>
-      <a class="block px-3 py-3 text-neutral-300 hover:text-gold" href="hiring.html">Hiring</a>
+      <a class="block px-3 py-3 text-neutral-300 hover:text-gold" data-nav="about" href="${pageHref('#about')}">About</a>
+      <a class="block px-3 py-3 text-neutral-300 hover:text-gold" data-nav="menu" href="${pageHref('#menu')}">Menu</a>
+      <a class="block px-3 py-3 text-neutral-300 hover:text-gold" data-nav="locations" href="${pageHref('#locations')}">Locations</a>
+      <a class="block px-3 py-3 text-neutral-300 hover:text-gold" data-nav="gallery" href="${pageHref('#gallery')}">Gallery</a>
+      <a class="block px-3 py-3 text-neutral-300 hover:text-gold" data-nav="catering" href="catering.html">Catering</a>
+      <a class="block px-3 py-3 text-neutral-300 hover:text-gold" data-nav="hiring" href="hiring.html">Hiring</a>
       <details class="px-3 py-2 text-neutral-300">
         <summary class="cursor-pointer hover:text-gold">Gift Card</summary>
         <div class="mt-2 ml-3 space-y-1 border-l border-neutral-700 pl-3">
@@ -150,22 +150,39 @@ const FOOTER_HTML = `
     </div>
   </div>
 </footer>
-<div class="kora-powered-by" style="display:flex;justify-content:flex-end;align-items:center;gap:0.35rem;padding:0.75rem 1rem;font-size:0.75rem;"><span style="color:#64748b">Powered by</span><a href="https://askkora.ai" target="_blank" rel="noopener noreferrer" style="text-decoration:none;font-weight:600;background:linear-gradient(135deg,#1E88E5,#7B1FA2);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Kora</a></div>
 `;
 
-function renderIncludes() {
-  const headerMount = document.getElementById('site-header');
-  const footerMount = document.getElementById('site-footer');
-  if (headerMount) headerMount.innerHTML = HEADER_HTML;
-  if (footerMount) footerMount.innerHTML = FOOTER_HTML;
-
-  const toggle = document.querySelector('[data-mobile-menu-toggle]');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (toggle && mobileMenu) {
-    toggle.addEventListener('click', function () {
-      mobileMenu.classList.toggle('hidden');
-    });
-  }
+function applyActiveNav(page) {
+  if (!page) return;
+  document.querySelectorAll('[data-nav="' + page + '"]').forEach(function (link) {
+    link.classList.add('is-active');
+  });
 }
 
-document.addEventListener('DOMContentLoaded', renderIncludes);
+function renderPartials() {
+  const headerMount = document.getElementById('site-header');
+  const footerMount = document.getElementById('site-footer');
+
+  if (!headerMount && !footerMount) return;
+
+  if (headerMount) {
+    headerMount.innerHTML = HEADER_HTML;
+    applyActiveNav(document.body.dataset.page || '');
+
+    const toggle = headerMount.querySelector('[data-mobile-menu-toggle]');
+    const mobileMenu = headerMount.querySelector('#mobile-menu');
+    if (toggle && mobileMenu) {
+      toggle.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  }
+
+  if (footerMount) {
+    footerMount.innerHTML = FOOTER_HTML;
+  }
+
+  document.dispatchEvent(new CustomEvent('site:partials-loaded'));
+}
+
+document.addEventListener('DOMContentLoaded', renderPartials);

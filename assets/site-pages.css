@@ -88,6 +88,11 @@ a.border-2.rounded-none:active {
   white-space: nowrap;
 }
 
+.nav-desktop [data-nav].is-active,
+.nav-mobile-menu [data-nav].is-active {
+  color: #D4AF37;
+}
+
 .nav-mobile-toggle,
 .nav-mobile-menu {
   display: none;
