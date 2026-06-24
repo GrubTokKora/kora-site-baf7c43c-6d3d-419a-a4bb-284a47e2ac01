@@ -92,6 +92,22 @@
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
         }
 
+        .location-card[data-location-url] {
+            cursor: pointer;
+        }
+
+        .home-location-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.25rem;
+            color: #D4AF37;
+            font-size: 0.82rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
         .hero-gradient {
             background: linear-gradient(135deg, #0f0f0f 0%, #1a1a2e 50%, #0f0f0f 100%);
         }
@@ -643,7 +659,7 @@
 </div>
 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
 <!-- Ridgefield -->
-<div class="location-card rounded-2xl p-6 text-white border border-neutral-700 hover:border-gold transition-all group">
+<div class="location-card rounded-2xl p-6 text-white border border-neutral-700 hover:border-gold transition-all group" data-location-url="ridgefield.html" role="link" tabindex="0" aria-label="View Ridgefield location page">
 <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold transition-colors">
 <svg aria-hidden="true" class="w-6 h-6 text-gold group-hover:text-black" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
 </div>
@@ -658,9 +674,10 @@
 <p class="text-xs text-neutral-400 uppercase tracking-wider mb-1">Hours</p>
 <p class="text-sm text-neutral-300">Mon-Sun: 11:30am - 8:30pm</p>
 </div>
+<a class="home-location-link" href="ridgefield.html">View Location <span aria-hidden="true">-></span></a>
 </div>
 <!-- Briarcliff -->
-<div class="location-card rounded-2xl p-6 text-white border border-neutral-700 hover:border-gold transition-all group">
+<div class="location-card rounded-2xl p-6 text-white border border-neutral-700 hover:border-gold transition-all group" data-location-url="briarcliff.html" role="link" tabindex="0" aria-label="View Briarcliff location page">
 <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold transition-colors">
 <svg aria-hidden="true" class="w-6 h-6 text-gold group-hover:text-black" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
 </div>
@@ -675,9 +692,10 @@
 <p class="text-xs text-neutral-400 uppercase tracking-wider mb-1">Hours</p>
 <p class="text-sm text-neutral-300">Mon-Sun: 11:30am - 9pm</p>
 </div>
+<a class="home-location-link" href="briarcliff.html">View Location <span aria-hidden="true">-></span></a>
 </div>
 <!-- Guilford -->
-<div class="location-card rounded-2xl p-6 text-white border border-neutral-700 hover:border-gold transition-all group">
+<div class="location-card rounded-2xl p-6 text-white border border-neutral-700 hover:border-gold transition-all group" data-location-url="guilford.html" role="link" tabindex="0" aria-label="View Guilford location page">
 <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold transition-colors">
 <svg aria-hidden="true" class="w-6 h-6 text-gold group-hover:text-black" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
 </div>
@@ -693,9 +711,10 @@
 <p class="text-sm text-neutral-300">Sun-Thu: 11:30am - 8:30pm</p>
 <p class="text-sm text-neutral-300">Fri-Sat: 11:30am - 9pm</p>
 </div>
+<a class="home-location-link" href="guilford.html">View Location <span aria-hidden="true">-></span></a>
 </div>
 <!-- Bedford Hills -->
-<div class="location-card rounded-2xl p-6 text-white border border-neutral-700 hover:border-gold transition-all group">
+<div class="location-card rounded-2xl p-6 text-white border border-neutral-700 hover:border-gold transition-all group" data-location-url="bedford-hills.html" role="link" tabindex="0" aria-label="View Bedford Hills location page">
 <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold transition-colors">
 <svg aria-hidden="true" class="w-6 h-6 text-gold group-hover:text-black" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
 </div>
@@ -711,9 +730,10 @@
 <p class="text-sm text-neutral-300">Monday: CLOSED</p>
 <p class="text-sm text-neutral-300">Tue-Sun: 11:30am - 9pm</p>
 </div>
+<a class="home-location-link" href="bedford-hills.html">View Location <span aria-hidden="true">-></span></a>
 </div>
 <!-- Brookfield -->
-<div class="location-card rounded-2xl p-6 text-white border border-neutral-700 hover:border-gold transition-all group">
+<div class="location-card rounded-2xl p-6 text-white border border-neutral-700 hover:border-gold transition-all group" data-location-url="brookfield.html" role="link" tabindex="0" aria-label="View Brookfield location page">
 <div class="w-12 h-12 bg-gold/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-gold transition-colors">
 <svg aria-hidden="true" class="w-6 h-6 text-gold group-hover:text-black" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path><circle cx="12" cy="10" r="3"></circle></svg>
 </div>
@@ -728,6 +748,7 @@
 <p class="text-xs text-neutral-400 uppercase tracking-wider mb-1">Hours</p>
 <p class="text-sm text-neutral-300">Mon-Sun: 11:30am - 9pm</p>
 </div>
+<a class="home-location-link" href="brookfield.html">View Location <span aria-hidden="true">-></span></a>
 </div>
 </div>
 <!-- Order Online Section - Below Location Cards -->
@@ -1092,6 +1113,23 @@
                     // Close mobile menu if open
                     document.getElementById('mobile-menu').classList.add('hidden');
                 }
+            });
+        });
+
+        document.querySelectorAll('.location-card[data-location-url]').forEach(card => {
+            const openLocationPage = () => {
+                window.location.href = card.dataset.locationUrl;
+            };
+
+            card.addEventListener('click', event => {
+                if (event.target.closest('a')) return;
+                openLocationPage();
+            });
+
+            card.addEventListener('keydown', event => {
+                if (event.key !== 'Enter' && event.key !== ' ') return;
+                event.preventDefault();
+                openLocationPage();
             });
         });
 
