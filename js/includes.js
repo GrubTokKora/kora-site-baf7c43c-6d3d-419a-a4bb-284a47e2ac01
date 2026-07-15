@@ -137,9 +137,9 @@ const FOOTER_HTML = `
         <h3 class="font-bold text-lg mb-6 text-gold">Contact</h3>
         <ul class="space-y-3 text-neutral-400">
           <li>
-            <a class="flex items-center gap-2 hover:text-gold transition-colors" href="mailto:info@jaiporect.com">
+            <a class="flex items-center gap-2 hover:text-gold transition-colors" href="mailto:jaiporexpress@gmail.com">
               <svg aria-hidden="true" class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect height="16" rx="2" width="20" x="2" y="4"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-              info@jaiporect.com
+              jaiporexpress@gmail.com
             </a>
           </li>
         </ul>
