@@ -146,7 +146,7 @@ const FOOTER_HTML = `
       </div>
     </div>
     <div class="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center text-neutral-500 text-sm">
-      <p>© 2024 Jaipore Xpress. All rights reserved.</p>
+      <p>© 2026 Jaipore Xpress. All rights reserved.</p>
     </div>
   </div>
 </footer>
