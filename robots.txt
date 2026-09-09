@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /.kora/
 Sitemap: https://jaiporexpress.com/sitemap.xml
