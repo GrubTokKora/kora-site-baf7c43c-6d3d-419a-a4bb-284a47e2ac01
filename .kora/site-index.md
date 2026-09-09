@@ -16,6 +16,7 @@ sections:
 - `#locations` "Our Locations" — the five restaurants: Ridgefield, Briarcliff, Guilford, Bedford Hills, Brookfield
 - `#order-online` "Get Jaipore Delivered" — the ordering block, listing the same five locations again
 - `#gallery` "Gallery" — photographs of the food and the room
+- `#faq` "Frequently Asked Questions" — answers to common questions about locations, online ordering, hours, dietary options, lunch specials, and catering
 - `#contact` "Get In Touch" — the enquiry block
 - `#contact-form` — the enquiry form
 - `#name`, `#email`, `#message` — the form's fields
