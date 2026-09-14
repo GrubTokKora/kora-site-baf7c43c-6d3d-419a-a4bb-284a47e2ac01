@@ -1,84 +1,30 @@
 # JAIPORE Xpress
 
-> JAIPORE Xpress is an Indian restaurant located at 19 Bailey Ave in Ridgefield, CT, offering a takeout-focused menu featuring traditional dishes such as samosas, curries, and dosas.
+> Indian eatery with locations across CT and NY — samosas, curries, dosas, and takeout-focused Indian dining.
 
-## Services
-### Starters
-- Lentil Soup — $8
-- Veg Samosa — $9
-- Pakhora — $10
-- Lassoni Gobi — $15
-- Kalmi Kabab — $16
-- Luchi Bagari Jinga — $17
-- Masala Dosa — $18
-- Iddly — $15
+## Locations
+- Ridgefield, CT: 19 Bailey Ave, Ridgefield, CT 06877. Phone: (203) 403-3997.
+- Briarcliff, NY: 1116 Pleasantville Rd, Briarcliff, NY. Phone: (914) 373-4821.
+- Guilford, CT: 33 Water Street, Unit A, Guilford, CT. Phone: (203) 533-7040.
+- Brookfield, CT: 782 Federal Rd, Brookfield, CT. Phone: (203) 546-7446.
+- Bedford Hills, NY: 740 N Bedford Rd, Bedford Hills, NY. Phone: (914) 218-3262.
 
-### Street Side Chaat
-- Imli Baingan — $14
-- Samosa Chaat — $14
-- Paapdi Chaat — $12
+## Hours (Ridgefield)
+- Monday–Sunday: 11:30 AM – 8:30 PM
 
-### Indo Chinese
-- Chilli Chicken — $17
-- Chilli Paneer — $16
-- Mango Chicken — $17
-- Gobi Manchurian — $16
-- Veg Fried Rice — $14
+## Pages
+- [Home](https://jaiporexpress.com/): Overview and locations
+- [Menu](https://jaiporexpress.com/#menu): Starters, street-side chaat, Indo-Chinese, vegetarian, vegan, chicken, lamb/goat — full priced menu
+- [Catering](https://jaiporexpress.com/catering): Catering requests for events
+- [Hiring](https://jaiporexpress.com/hiring): Open positions
+- [Ridgefield](https://jaiporexpress.com/ridgefield)
+- [Briarcliff](https://jaiporexpress.com/briarcliff)
+- [Guilford](https://jaiporexpress.com/guilford)
+- [Brookfield](https://jaiporexpress.com/brookfield)
+- [Bedford Hills](https://jaiporexpress.com/bedford-hills)
 
-### Vegetarian
-- Paneer Butter Masala — $19
-- Malai Kofta — $19
-- Navratan Korma — $19
-- Saag Paneer — $19
-- Matar Paneer — $19
-- Daal Makhani — $18
+## Ordering
+- [Order online](https://www.toasttab.com/jaiporexpress/v2/online-order#!)
 
-### Vegan
-- Aloo Gobi — $19
-- Aloo Dhansak — $19
-- Tadka Daal — $17
-- Channa Masala — $17
-- Jeera Aloo — $16
-
-### Chicken
-- Chicken Tikka Masala — $23
-- Butter Chicken — $22
-- Chicken Saag — $22
-- Coondapur Chicken — $21
-- Chicken Korma — $22
-- Chicken Chettinad — $22
-- Chicken Vindaloo — $20
-- Chicken Aam Ras — $20
-
-### Lamb / Goat
-- Lamb Rogan Josh — $27
-- Butter Lamb Masala — $27
-- Lamb Madras — $27
-- Lamb Korma — $27
-- Lamb Saag — $27
-
-*Full menu: https://jaiporexpress.com/menu*
-
-### Signature
-- Veg Samosa
-- Chicken Tikka Masala
-
-## Location & Contact
-- Address: 19 Bailey Ave, Ridgefield, CT 06877, USA
-- Phone: +12034033997
-- Email: jaiporexpress@gmail.com
-- Website: https://jaiporexpress.com
-
-## Hours
-- Monday: 11:30 AM – 8:30 PM
-- Tuesday: 11:30 AM – 8:30 PM
-- Wednesday: 11:30 AM – 8:30 PM
-- Thursday: 11:30 AM – 8:30 PM
-- Friday: 11:30 AM – 8:30 PM
-- Saturday: 11:30 AM – 8:30 PM
-- Sunday: 11:30 AM – 8:30 PM
-
-## Action Links
-- Order Online: https://www.toasttab.com/jaiporexpress/v2/online-order#!
-- View Menu: https://jaiporexpress.com/#menu
-- Find Location: https://jaiporexpress.com/#locations
+## Email
+- jaiporexpress@gmail.com
