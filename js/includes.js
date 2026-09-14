@@ -1,4 +1,4 @@
-const JAIPORE_LOGO = 'https://quseprdus1.blob.core.windows.net/kora-business-images/user-media/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/de8c94d8-887e-4625-825f-ec262dbc28df/1781245809_m58x0r.png';
+const JAIPORE_LOGO = 'https://quseprdus1.blob.core.windows.net/kora-business-images/v2-uploads/baf7c43c-6d3d-419a-a4bb-284a47e2ac01/eb281b37-d2e6-4216-b172-bf02acd7e3a9-01_1781245809_m58x0r.webp';
 
 function pageHref(hash) {
   return window.location.pathname.endsWith('/index.html') || window.location.pathname.endsWith('/')
