@@ -173,34 +173,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             transition-duration: 0.1s;
         }
 
-        .menu-category:hover,
-        .menu-category.active {
-            background-color: #D4AF37;
-            color: #0f0f0f;
-        }
-
-        .menu-category.active {
-            transform: scale(1.03);
-        }
-
-        .menu-category.active:hover {
-            transform: scale(1.08);
-        }
-
-        .menu-categories-bar {
+        /* The menu is drawn by Kora into the kora:data:menu region; these rules give it this site's look. */
+        .kora-menu .kora-menu__nav {
             position: sticky;
             top: 5rem;
             z-index: 40;
-            margin-bottom: 1.5rem;
-            margin-left: -1rem;
-            margin-right: -1rem;
+            margin: 0 -1rem 1.5rem;
             padding: 0.75rem 1rem;
             background: rgba(23, 23, 23, 0.95);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-        }
-
-        .menu-categories-scroll {
             display: flex;
             flex-wrap: nowrap;
             gap: 0.75rem;
@@ -208,34 +190,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             overflow-y: hidden;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            padding: 0.25rem 0;
         }
-
-        .menu-categories-scroll::-webkit-scrollbar {
-            display: none;
-        }
-
-        .menu-categories-scroll .menu-category {
+        .kora-menu .kora-menu__nav::-webkit-scrollbar { display: none; }
+        .kora-menu .kora-menu__nav a {
             flex: 0 0 auto;
             white-space: nowrap;
+            padding: 0.625rem 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 0;
+            color: #D4AF37;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
-
-        @media (min-width: 640px) {
-            .menu-categories-bar {
-                margin-left: -1.5rem;
-                margin-right: -1.5rem;
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
+        .kora-menu .kora-menu__nav a:hover,
+        .kora-menu .kora-menu__nav a.is-active {
+            background-color: #D4AF37;
+            color: #0f0f0f;
         }
-
-        @media (min-width: 1024px) {
-            .menu-categories-bar {
-                margin-left: -2rem;
-                margin-right: -2rem;
-                padding-left: 2rem;
-                padding-right: 2rem;
-            }
+        .kora-menu .kora-menu__nav a.is-active { transform: scale(1.03); }
+        .kora-menu .kora-menu__nav a.is-active:hover { transform: scale(1.08); }
+        @media (min-width: 640px) { .kora-menu .kora-menu__nav { margin-left: -1.5rem; margin-right: -1.5rem; padding-left: 1.5rem; padding-right: 1.5rem; } }
+        @media (min-width: 1024px) { .kora-menu .kora-menu__nav { margin-left: -2rem; margin-right: -2rem; padding-left: 2rem; padding-right: 2rem; } }
+        .kora-menu .kora-menu__section { margin: 0; }
+        .kora-menu .kora-menu__section-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+        .kora-menu .kora-menu__items { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 768px) { .kora-menu .kora-menu__items { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (min-width: 1024px) { .kora-menu .kora-menu__items { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        .kora-menu .kora-menu__item {
+            display: block;
+            background: #262626;
+            border: 1px solid #404040;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        .kora-menu .kora-menu__item:hover { border-color: rgba(212, 175, 55, 0.5); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
+        .kora-menu .kora-menu__item-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 0.75rem; }
+        .kora-menu .kora-menu__item-name { margin: 0; font-family: 'Playfair Display', serif; font-size: 1.25rem; line-height: 1.75rem; font-weight: 700; color: #fff; }
+        .kora-menu .kora-menu__item-price { font-weight: 700; font-size: 1.125rem; line-height: 1.75rem; color: #D4AF37; white-space: nowrap; }
+        .kora-menu .kora-menu__item-desc { margin: 0; color: #a3a3a3; font-size: 0.875rem; line-height: 1.625; opacity: 1; }
         }
 
         .fade-in {
@@ -1529,581 +1526,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 </div>
 <div id="menu-sticky-container">
-<!-- Menu Categories -->
-<div class="menu-categories-bar" id="menu-categories-bar">
-<div aria-label="Menu categories" class="menu-categories-scroll" role="group">
-<button class="menu-category active px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="starters" onclick="filterMenu('starters')">
-                    Starters
-                </button>
-<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="street-side-chaat" onclick="filterMenu('street-side-chaat')">
-                    Street Side Chaat
-                </button>
-<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="indo-chinese" onclick="filterMenu('indo-chinese')">
-                    Indo Chinese
-                </button>
-<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="vegetarian" onclick="filterMenu('vegetarian')">
-                    Vegetarian
-                </button>
-<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="vegan" onclick="filterMenu('vegan')">
-                    Vegan
-                </button>
-<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="chicken" onclick="filterMenu('chicken')">
-                    Chicken
-                </button>
-<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="lamb-goat" onclick="filterMenu('lamb-goat')">
-                    Lamb / Goat
-                </button>
-<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="tandoori" onclick="filterMenu('tandoori')">
-                    Tandoori
-                </button>
-<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="seafood" onclick="filterMenu('seafood')">
-                    Seafood
-                </button>
-<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="rice-dishes" onclick="filterMenu('rice-dishes')">
-                    Rice Dishes
-                </button>
-<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="sides" onclick="filterMenu('sides')">
-                    Sides
-                </button>
-<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="breads" onclick="filterMenu('breads')">
-                    Breads
-                </button>
-<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="desserts" onclick="filterMenu('desserts')">
-                    Desserts
-                </button>
-<button class="menu-category px-6 py-2.5 rounded-none border border-gold/30 text-gold hover:bg-gold hover:text-black transition-all text-sm font-semibold uppercase tracking-wider" data-category="house-drinks" onclick="filterMenu('house-drinks')">
-                    House Drinks
-                </button>
-</div>
-</div>
-<!-- Menu Grid -->
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="menu-grid">
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50" data-menu-category="starters">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Lentil Soup</h3>
-<span class="text-gold font-bold text-lg">$8</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">A vegan classic, coconut milk, peppercorn infused tempering</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50" data-menu-category="starters">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Veg Samosa</h3>
-<span class="text-gold font-bold text-lg">$9</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">A blend of peas and potatoes in a savory fold</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50" data-menu-category="starters">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Pakhora</h3>
-<span class="text-gold font-bold text-lg">$10</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Choice of onions or potato fritters in carom seed infused chickpea batter</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50" data-menu-category="starters">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Lassoni Gobi</h3>
-<span class="text-gold font-bold text-lg">$15</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Handpicked corn battered cauliflower in tangy garlic tomato</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50" data-menu-category="starters">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Kalmi Kabab</h3>
-<span class="text-gold font-bold text-lg">$16</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Skewered charcoal baked wings in house blend spices</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50" data-menu-category="starters">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Luchi Bagari Jinga</h3>
-<span class="text-gold font-bold text-lg">$17</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Tiger shrimp in honey infused tomato cream and mustard tempering, served with wheat bread</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50" data-menu-category="starters">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Masala Dosa</h3>
-<span class="text-gold font-bold text-lg">$18</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Crispy crepe made of fermented rice and lentil with spiced potato stuffing</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50" data-menu-category="starters">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Iddly</h3>
-<span class="text-gold font-bold text-lg">$15</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Fermented rice cakes served with sambar and coconut chutney</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="street-side-chaat">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Imli Baingan</h3>
-<span class="text-gold font-bold text-lg">$14</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Dates &amp; tamarind sauce layered over crisp batter fried eggplant</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="street-side-chaat">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Samosa Chaat</h3>
-<span class="text-gold font-bold text-lg">$14</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Mashed samosas over chickpeas layered with tamarind onions and sev</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="street-side-chaat">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Paapdi Chaat</h3>
-<span class="text-gold font-bold text-lg">$12</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Fried crisp savory topped with tamarind, green chutney and onions</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="indo-chinese">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Chilli Chicken</h3>
-<span class="text-gold font-bold text-lg">$17</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Corn battered chicken tossed in soy and chilli tomato</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="indo-chinese">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Chilli Paneer</h3>
-<span class="text-gold font-bold text-lg">$16</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Corn battered cheese tossed in soy and chilli tomato</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="indo-chinese">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Mango Chicken</h3>
-<span class="text-gold font-bold text-lg">$17</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Battered chicken tossed with cumin infused spiced mango glaze</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="indo-chinese">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Gobi Manchurian</h3>
-<span class="text-gold font-bold text-lg">$16</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Cauliflower tossed into minced veggies and soy tomato glaze</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="indo-chinese">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Veg Fried Rice</h3>
-<span class="text-gold font-bold text-lg">$14</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Long grain basmati tossed with vegetable soy and tomato</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="vegetarian">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Paneer Butter Masala</h3>
-<span class="text-gold font-bold text-lg">$19</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Paneer cheese dices in smoked bell pepper infused tomato cream and clarified butter</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="vegetarian">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Malai Kofta</h3>
-<span class="text-gold font-bold text-lg">$19</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Paneer cheese, raisin, turmeric infused veg dumplings in cashew cream sauce with bayleaf</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="vegetarian">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Navratan Korma</h3>
-<span class="text-gold font-bold text-lg">$19</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Paneer, pineapple, sautéed vegetables in spiced cashew cream sauce</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="vegetarian">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Saag Paneer</h3>
-<span class="text-gold font-bold text-lg">$19</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">A classic curry dish made with blanched puree of fresh spinach with onions, spices, paneer and herbs</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="vegetarian">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Matar Paneer</h3>
-<span class="text-gold font-bold text-lg">$19</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Turmeric infused green peas and paneer in spiced onion and cream</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="vegetarian">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Daal Makhani</h3>
-<span class="text-gold font-bold text-lg">$18</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Simmered black lentils in cream, tempered with sundried chili and freshly diced tomatoes</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="vegan">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Aloo Gobi</h3>
-<span class="text-gold font-bold text-lg">$19</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">A homestyle low flamed preparation of potatoes and cauliflower with ginger and garlic</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="vegan">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Aloo Dhansak</h3>
-<span class="text-gold font-bold text-lg">$19</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">A stewed potato dish with pressure cooked lentils, spinach with a hint of tamarind</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="vegan">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Tadka Daal</h3>
-<span class="text-gold font-bold text-lg">$17</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Pressure cooked mildly spiced yellow lentils finished with crackled mustard and curry leaf</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="vegan">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Channa Masala</h3>
-<span class="text-gold font-bold text-lg">$17</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Chickpea curry infused with tamarind and sundried mango powder</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="vegan">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Jeera Aloo</h3>
-<span class="text-gold font-bold text-lg">$16</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Potatoes tossed into roasted cumin and onions</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="chicken">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Chicken Tikka Masala</h3>
-<span class="text-gold font-bold text-lg">$23</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Popular boneless barbecued chicken in tomato and cream</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="chicken">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Butter Chicken</h3>
-<span class="text-gold font-bold text-lg">$22</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Charcoal oven baked strips of chicken in smoked pepper infused cream and tomato</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="chicken">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Chicken Saag</h3>
-<span class="text-gold font-bold text-lg">$22</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Curried chicken in spiced spinach puree and cream</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="chicken">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Coondapur Chicken</h3>
-<span class="text-gold font-bold text-lg">$21</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Southern style coconut chicken curry tempered with mustard and curry leaves</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="chicken">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Chicken Korma</h3>
-<span class="text-gold font-bold text-lg">$22</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">A rich combination of cashew cream blend with onions with a hint of rose petal extract and saffron</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="chicken">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Chicken Chettinad</h3>
-<span class="text-gold font-bold text-lg">$22</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Popular south indian dish with all spice and peppercorn and curry leaf tempering</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="chicken">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Chicken Vindaloo</h3>
-<span class="text-gold font-bold text-lg">$20</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Sundried chili paste, vinegar and potatoes</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="chicken">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Chicken Aam Ras</h3>
-<span class="text-gold font-bold text-lg">$20</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Puree of mango and cream infused curry sauce</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="lamb-goat">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Lamb Rogan Josh</h3>
-<span class="text-gold font-bold text-lg">$27</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">A persian influenced passionate curry dish of Kashmir which dates back to the mughal regime</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="lamb-goat">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Butter Lamb Masala</h3>
-<span class="text-gold font-bold text-lg">$27</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Simmered lamb curry infused with cream and tomato</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="lamb-goat">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Lamb Madras</h3>
-<span class="text-gold font-bold text-lg">$27</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Curried lamb cooked in freshly strained coconut milk with mustard, curry leaf tempering</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="lamb-goat">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Lamb Korma</h3>
-<span class="text-gold font-bold text-lg">$27</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">A rich combination of cashew cream blend with onions, rose petal extract and saffron</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="lamb-goat">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Lamb Saag</h3>
-<span class="text-gold font-bold text-lg">$27</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Curried lamb in pureed spinach and cream</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="lamb-goat">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Lamb Vindaloo</h3>
-<span class="text-gold font-bold text-lg">$27</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Sundried chili paste with vinegar and potatoes</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="lamb-goat">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Goat Curry</h3>
-<span class="text-gold font-bold text-lg">$27</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Curry of simmered young goat on the bone</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="tandoori">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Chicken Tandoori</h3>
-<span class="text-gold font-bold text-lg">$23</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Barbecue style charcoal baked chicken on the bone in spiced strained yoghurt marinade</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="tandoori">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Chicken Malai Kabab</h3>
-<span class="text-gold font-bold text-lg">$22</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Barbecue style mildly cardamom spiced tenders in a cream cheese marinade</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="tandoori">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Shrimp Malai Kabab</h3>
-<span class="text-gold font-bold text-lg">$28</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Tiger shrimp in mildly spiced cream marinade</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="seafood">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Salmon Moilee</h3>
-<span class="text-gold font-bold text-lg">$28</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Fillet of fish over mustard and curry leaf tempered coconut sauce</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="seafood">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Chingiri Malai Curry</h3>
-<span class="text-gold font-bold text-lg">$27</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">East indian favorite shrimp dish with coconut milk and home ground spices</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="seafood">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Shrimp Tadka Masala</h3>
-<span class="text-gold font-bold text-lg">$27</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Curry leaf and mustard seed tempered cream and tomato sauce</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="seafood">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Shrimp Aam Ras</h3>
-<span class="text-gold font-bold text-lg">$27</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Mango puree blend into curry sauce and finished with cream</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="rice-dishes">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Biryani (Chicken)</h3>
-<span class="text-gold font-bold text-lg">$21</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">A unique blend of ground masala's tossed into long grain basmati rice</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="rice-dishes">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Biryani (Lamb)</h3>
-<span class="text-gold font-bold text-lg">$25</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">A unique blend of ground masala's tossed into long grain basmati rice</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="rice-dishes">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Biryani (Shrimp)</h3>
-<span class="text-gold font-bold text-lg">$26</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">A unique blend of ground masala's tossed into long grain basmati rice</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="rice-dishes">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Biryani (Veg. Paneer)</h3>
-<span class="text-gold font-bold text-lg">$19</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">A unique blend of ground masala's tossed into long grain basmati rice</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="rice-dishes">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Biryani (Goat)</h3>
-<span class="text-gold font-bold text-lg">$25</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">A unique blend of ground masala's tossed into long grain basmati rice</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="rice-dishes">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Coconut Rice</h3>
-<span class="text-gold font-bold text-lg">$14</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Mustard, curry leaf and dry chilli tempered</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="rice-dishes">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Lemon Rice</h3>
-<span class="text-gold font-bold text-lg">$12</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Turmeric and lemon infused rice</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="sides">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Raita</h3>
-<span class="text-gold font-bold text-lg">$6</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Refreshing yoghurt relish - roasted cumin cucumber carrots</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="sides">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Mixed Pickle</h3>
-<span class="text-gold font-bold text-lg">$5</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Pickled vegetables</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="sides">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Mango Chutney</h3>
-<span class="text-gold font-bold text-lg">$6</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Sweet relish</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="sides">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Pappadum</h3>
-<span class="text-gold font-bold text-lg">$5</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Lentil wafers</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="breads">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Naan (Plain)</h3>
-<span class="text-gold font-bold text-lg">$5</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Clay oven baked white flour bread</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="breads">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Naan (Garlic)</h3>
-<span class="text-gold font-bold text-lg">$6</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Clay oven baked white flour bread with garlic</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="breads">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Naan (Onion)</h3>
-<span class="text-gold font-bold text-lg">$6</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Clay oven baked white flour bread with onion</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="breads">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Naan (Cheese)</h3>
-<span class="text-gold font-bold text-lg">$7</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Clay oven baked white flour bread with cheese</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="breads">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Coconut Cheese Naan</h3>
-<span class="text-gold font-bold text-lg">$7</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Clay oven baked bread with coconut and cheese</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="breads">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Whole Wheat Roti</h3>
-<span class="text-gold font-bold text-lg">$5</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Traditional whole wheat flatbread</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="breads">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Corn Roti (Gluten Free)</h3>
-<span class="text-gold font-bold text-lg">$5</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Gluten free corn flatbread</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="desserts">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Gulab Jamun</h3>
-<span class="text-gold font-bold text-lg">$6</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Warm milk dumplings in rose syrup</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="desserts">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Rice Pudding</h3>
-<span class="text-gold font-bold text-lg">$6</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Traditional creamy rice dessert</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="desserts">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Rasmalai</h3>
-<span class="text-gold font-bold text-lg">$7</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Soft cheese patties in saffron milk</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="desserts">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Kulfi</h3>
-<span class="text-gold font-bold text-lg">$4</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Traditional Indian ice cream</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="house-drinks">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Sodas</h3>
-<span class="text-gold font-bold text-lg">$3.50</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Coke / Diet Coke / Sprite / Ginger ale</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="house-drinks">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Masala Chai / Madras Coffee</h3>
-<span class="text-gold font-bold text-lg">$4</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Traditional spiced tea or South Indian filter coffee</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="house-drinks">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Mango Lassi</h3>
-<span class="text-gold font-bold text-lg">$7</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Refreshing mango yogurt drink</p>
-</article>
-<article class="menu-card bg-neutral-800 rounded-xl p-6 border border-neutral-700 hover:border-gold/50 hidden" data-menu-category="house-drinks">
-<div class="flex justify-between items-start mb-3">
-<h3 class="font-display text-xl font-bold text-white">Saratoga Water</h3>
-<span class="text-gold font-bold text-lg">$6</span>
-</div>
-<p class="text-neutral-400 text-sm leading-relaxed">Still / Sparkling</p>
-</article>
-</div>
+<!-- kora:data:menu layout="grid" -->
+<!-- /kora:data:menu -->
 </div>
 <!-- Xpress Lunch -->
 <div class="mt-16 bg-gold/10 border border-gold/30 rounded-2xl">
@@ -2522,35 +1946,30 @@ How many locations does JAIPORE Xpress have?
             window.scrollTo({ top: Math.max(0, top), behavior: 'smooth' });
         }
 
-        // Filter shows/hides pre-rendered HTML cards (crawlable menu stays in DOM)
-        function filterMenu(category) {
-            document.querySelectorAll('.menu-category').forEach(btn => {
-                btn.classList.remove('active');
-                if (btn.dataset.category === category) {
-                    btn.classList.add('active');
-                    btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                }
+        // Category tabs over the rendered menu: every section stays in the page (crawlable); one is shown at a time.
+        function filterMenu(id) {
+            const links = document.querySelectorAll('.kora-menu__nav a');
+            links.forEach(link => {
+                const active = link.getAttribute('href') === '#' + id;
+                link.classList.toggle('is-active', active);
+                if (active) link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
             });
-
-            let visibleIndex = 0;
-            document.querySelectorAll('#menu-grid [data-menu-category]').forEach((card) => {
-                const match = card.dataset.menuCategory === category;
-                card.classList.toggle('hidden', !match);
-                if (match) {
-                    card.classList.remove('fade-in');
-                    // Force restart so delay stays relative to visible items only
-                    void card.offsetWidth;
-                    card.classList.add('fade-in');
-                    card.style.animationDelay = `${visibleIndex * 0.05}s`;
-                    visibleIndex += 1;
-                } else {
-                    card.classList.remove('fade-in');
-                    card.style.animationDelay = '';
-                }
+            document.querySelectorAll('.kora-menu__section').forEach(section => {
+                section.hidden = section.id !== id;
             });
-
             requestAnimationFrame(scrollToMenuView);
         }
+        (function () {
+            const links = document.querySelectorAll('.kora-menu__nav a');
+            const sections = document.querySelectorAll('.kora-menu__section');
+            if (!links.length || !sections.length) return;
+            links.forEach(link => link.addEventListener('click', event => {
+                event.preventDefault();
+                filterMenu(link.getAttribute('href').slice(1));
+            }));
+            sections.forEach((section, index) => { section.hidden = index !== 0; });
+            links[0].classList.add('is-active');
+        })();
 
         // Hero image slider
         const heroSlides = document.querySelectorAll('.hero-slide');
