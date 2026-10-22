@@ -1,5 +1,5 @@
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--kora-font-body, 'Inter'), sans-serif;
 }
 
 /* Clickable controls (location, catering, hiring pages) */
@@ -28,7 +28,7 @@ select,
 }
 
 .font-display {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--kora-font-heading, 'Playfair Display'), serif;
 }
 
 .text-gold {
@@ -251,7 +251,7 @@ a.border-2.rounded-none:active {
 
 .location-hero-title {
   max-width: 48rem;
-  font-family: 'Playfair Display', serif;
+  font-family: var(--kora-font-heading, 'Playfair Display'), serif;
   font-size: clamp(3.5rem, 10vw, 7.75rem);
   line-height: 0.9;
   letter-spacing: -0.05em;
@@ -394,7 +394,7 @@ a.border-2.rounded-none:active {
 }
 
 .location-section-heading h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--kora-font-heading, 'Playfair Display'), serif;
   font-size: clamp(2.4rem, 5vw, 4.5rem);
   line-height: 1;
   letter-spacing: -0.04em;
@@ -452,7 +452,7 @@ a.border-2.rounded-none:active {
 .location-action-card h3,
 .location-info-card h3,
 .location-nearby-card h3 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--kora-font-heading, 'Playfair Display'), serif;
   font-size: 1.55rem;
   line-height: 1.15;
 }

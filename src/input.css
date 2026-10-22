@@ -1,3 +1,6 @@
 @import "tailwindcss";
 @source "../**/*.html";
 @source "../assets/**/*.js";
+
+/* Kora fonts: this site's own Google link never asked for optical sizing (Inter), so keep the look it was approved with. */
+@layer base { html { font-optical-sizing: none; } }
